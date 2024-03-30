@@ -1,0 +1,146 @@
+<!--STEP 4 OF SELLER ONOARDING (PICKUP ADDRESS)-->
+<!--HERE  Seller will enter their adress from which Products will be picked up-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="This page is for Users who have already registered and directly want to sign in ">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--STYLESHEET: -->
+
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="enhanced.css">
+        <!-- Colors Css -->
+        <link id="color-switcher" type="text/css" rel="stylesheet" href="#">
+       
+
+    </head>
+    <body>
+        <div id="main-wrapper" class="oxyy-login-register">
+            <div class="container-fluid px-0">
+              <div class="row no-gutters min-vh-100"> 
+                <!-- Register Form
+                ========================= -->
+                <div class="col-md-6 d-flex flex-column align-items-center order-2 order-md-1">
+                  <div class="container pt-5">
+                    <div class="row">
+                      <div class="col-11 col-md-10 mx-auto">
+                        
+                      </div>
+                    </div>
+                  </div>
+                  <div class="container my-auto py-5">
+                    <div class="row">
+                      <div class="col-11 col-md-10 col-lg-9 col-xl-8 mx-auto">
+            <h3 class="font-weight-300 text-9 mb-5">BANK DETAILS
+                        </h3>
+    <p style="color: gray; margin-top: -10px;">You can receive Weekly Payment directly in your bank Account.
+                        </p>
+                        <br>
+                        
+         <form id="sellerBankDetailsForm" onsubmit="return validateBankDetails()"  method="post">
+                              
+            <div class="form-group font-weight-300">
+                <label for="sellerNameBank">Account Holder Name</label>
+                <input type="text" class="form-control bg-light" id="sellerNameBank" required placeholder="This Name Should Match with PAN ">
+              </div>
+                    
+
+                          <div class="form-group font-weight-300 mt-4">
+                <label for="sellerBankAccountNumber">Bank Account Number</label>
+                            <input type="text" class="form-control bg-light" id="sellerBankAccountNumber" required placeholder="Enter Bank Account Number">
+                        </div>
+
+
+                        <div class="form-group font-weight-300 mt-4">
+                            <label for="confirmSellerBankAccountNumber">Confirm Bank Account Number</label>
+                            <input type="text" class="form-control bg-light" id="confirmSellerBankAccountNumber" required placeholder="Confirm Bank Account Number">
+                        </div>
+                         
+                        <div class="form-group font-weight-300 mt-4">
+                            <label for="sellerIfscCode">IFSC Code</label>
+                            <input type="text" class="form-control bg-light" id="sellerIfscCode" required
+                             placeholder="Enter IFSC Code">
+                        </div>
+                           
+
+
+                         
+             <p>Congrats ! You are Just a Click Away From Becoming Our Partner !  </p>
+             <button class="btn btn-dark btn-block shadow-none font-weight-400 my-4" type="submit">Save and Continue </button>
+                        </form>
+                                              </div>
+                    </div>
+                  </div>
+                </div>
+            
+                <div class="col-md-6 bg-dark order-1 order-md-2">
+                  <div class="container h-100 d-flex flex-column">
+                    <div class="row no-gutters">
+                      <div class="col-11 col-md-10 mx-auto">
+                        <div class="logo mt-5 mb-5 mb-md-0"> <a class="d-flex" href="index.html" title="Oxyy"><img src="https://png.pngtree.com/png-vector/20220521/ourmid/pngtree-bird-handicraft-logo-png-png-image_4644213.png" alt="KalaKriti Logo" style="width: 60%;height: 50%;"></a> </div>
+                      </div>
+                    </div>
+                    <div class="row no-gutters my-auto">
+                      <div class="col-11 col-md-10 mx-auto">
+                        <h1 class="text-13 font-weight-400 mb-4 text-light">Supporting Women Artisians</h1>
+                        <p style="color: #cecece;">Sell You Art Online - Zero Commision - Simple Process  </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Welcome Text End --> 
+              </div>
+            </div>
+          </div>
+          
+          <!-- Script --> 
+          <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+          <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+          <script >
+            
+            function validateBankDetails() {
+        const sellerNameBank = document.getElementById('sellerNameBank').value;
+        const sellerBankAccountNumber = document.getElementById('sellerBankAccountNumber').value;
+        const confirmSellerBankAccountNumber = document.getElementById('confirmSellerBankAccountNumber').value;
+        const sellerIfscCode = document.getElementById('sellerIfscCode').value;
+
+        // Validate account holder name (you may add additional checks if necessary)
+        if (sellerNameBank.trim() === '') {
+            alert('Please enter the Account Holder Name.');
+            return false;
+        }
+
+        // Validate bank account number format
+        const accountNumberRegex = /^\d{9,18}$/; // Assuming account numbers have 9 to 18 digits
+        if (!accountNumberRegex.test(sellerBankAccountNumber)) {
+            alert('Please enter a valid Bank Account Number (9 to 18 digits).');
+            return false;
+        }
+
+        // Compare bank account numbers for confirmation
+        if (sellerBankAccountNumber !== confirmSellerBankAccountNumber) {
+            alert('Bank Account Numbers do not match. Please enter them again.');
+            return false;
+        }
+
+        // Validate IFSC code format
+        const ifscRegex = /^[A-Za-z]{4}\d{7}$/; // IFSC code format: 4 letters followed by 7 digits
+        if (!ifscRegex.test(sellerIfscCode)) {
+            alert('Please enter a valid IFSC Code (4 letters followed by 7 digits).');
+            return false;
+        }
+
+        // All validations passed
+        // You can optionally perform more specific validation here if needed
+
+        // Redirect to the next page after successful validation
+        window.location.href = ".html";
+        return false;
+    }               
+          </script>     
+    </body>
+</html>
